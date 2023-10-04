@@ -24,5 +24,9 @@ Route::get('/admin/category/edit/{id}',[CategoryController::class,'edit']);
 Route::post('/admin/category/update/{id}',[CategoryController::class,'update']);
 Route::get('/admin/post',[PostController::class,'index']);
 Route::get('/admin/post/listing/{id}',[PostController::class,'listing']);
+Route::get('/admin/post/add-post/{id}',[PostController::class,'addPost']);
+Route::get('/admin/post/edit-post/{id}',[PostController::class,'editPost']);
+Route::post('/admin/post/update-post/{id}',[PostController::class,'updatePost']);
+Route::post('/admin/post/save-post',[PostController::class,'savePost']);
 
 

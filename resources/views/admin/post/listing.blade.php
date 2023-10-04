@@ -7,7 +7,8 @@
 
 </div>
 <div class="pd-30">
-    <a class="btn btn-primary redirect_btn"><i class="fa fa-save mg-r-10"></i> Add Category</a>
+
+    <a href="{{url('/admin/post/add-post/'.$cat_id)}}" class="btn btn-primary redirect_btn"><i class="fa fa-save mg-r-10"></i> Add Category</a>
 </div>
 
 <div class="br-pagebody mg-t-5 pd-x-30">
@@ -18,6 +19,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Slug</th>
                 <th>Create Date</th>
                 <th>Update Date</th>
                 <th>Action</th>
@@ -31,11 +33,12 @@
             ?>
             <tr>
                 <th scope="row"><?=$value->id?></th>
-                <td><?=$value->name?></td>
+                <td><?=$value->title?></td>
+                <td><?=$value->slug?></td>
                 <td><?=$value->created_at?></td>
                 <td><?=$value->updated_at?></td>
                 <td>
-                    <a href="{{url('/admin/category/edit/'.$value->id)}}" class="btn btn-primary"><i class="fa fa-edit mg-r-10"></i> Edit</a>
+                    <a href="{{url('/admin/post/edit-post/'.$value->id)}}" class="btn btn-primary"><i class="fa fa-edit mg-r-10"></i> Edit</a>
                 </td>
 
             </tr>

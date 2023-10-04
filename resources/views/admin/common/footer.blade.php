@@ -13,12 +13,12 @@
 <script src="{{asset('admin/lib/jquery-ui/jquery-ui.js')}}"></script>
 <script src="{{asset('admin/lib/jquery-switchbutton/jquery.switchButton.js')}}"></script>
 <script src="{{asset('admin/lib/peity/jquery.peity.js')}}"></script>
-<script src="{{asset('admin/lib/chartist/chartist.js')}}"></script>
 <script src="{{asset('admin/lib/jquery.sparkline.bower/jquery.sparkline.min.js')}}"></script>
 <script src="{{asset('admin/lib/d3/d3.js')}}"></script>
 <script src="{{asset('admin/lib/rickshaw/rickshaw.min.js')}}"></script>
+<script src="{{asset('admin/lib/select2/js/select2.min.js')}}"></script>
 
-
+<script src="{{asset('admin/lib/ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('admin/js/bracket.js')}}"></script>
 <script src="{{asset('admin/js/ResizeSensor.js')}}"></script>
 <script src="{{asset('admin/js/dashboard.js')}}"></script>

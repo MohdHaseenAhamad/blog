@@ -40,8 +40,12 @@
     <link href="{{asset('admin/lib/jquery-switchbutton/jquery.switchButton.css')}}" rel="stylesheet">
     <link href="{{asset('admin/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/lib/chartist/chartist.css')}}" rel="stylesheet">
+    <link href="{{asset('admin/lib/select2/css/select2.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{asset('admin/css/bracket.css')}}">
+    <script>
+
+    </script>
 </head>
 <body>
