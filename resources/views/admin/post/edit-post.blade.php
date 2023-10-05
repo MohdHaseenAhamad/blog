@@ -15,7 +15,7 @@
     <div class="br-section-wrapper">
 
 
-        <form action="{{url('admin/post/update-post/'.$result->id)}}" method="POST">
+        <form action="{{url('admin/post/update-post/'.$result->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-8">
@@ -26,7 +26,8 @@
                                 <?php foreach ($category as $key => $val)
                                 {
                                 ?>
-                                <option value="<?=$val->id?>" <?=$result->cat_id == $val->id ? 'selected="selected"':''?>><?=$val->name?></option>
+                                <option
+                                    value="<?=$val->id?>" <?=$result->cat_id == $val->id ? 'selected="selected"' : ''?>><?=$val->name?></option>
                                 <?php
                                 }?>
                             </select>
@@ -45,8 +46,8 @@
                 </div>
                 <div class="col-md-4 text-center">
                     <label class="custom-file">
-                        <input type="file" id="file" class="custom-file-input">
-                        <span class="custom-file-control"></span>
+                        <input type="file" id="file" name="photo">
+
                     </label>
                 </div>
             </div>
@@ -76,7 +77,8 @@
                                        type="text" value="<?=$result->meta_title?>">
                             </div>
                             <div class="col-md-6 p-3">
-                                <input class="form-control" placeholder="Meta Desc" name="meta_description" id="meta_description"
+                                <input class="form-control" placeholder="Meta Desc" name="meta_description"
+                                       id="meta_description"
                                        type="text" value="<?=$result->meta_description?>">
                             </div>
                             <div class="col-md-12 p-3">
@@ -113,4 +115,12 @@
         var v = v.replace(/-+/gi, '-');
         $('#' + to_show).val(v);
     }
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN':
+                $('meta[name ="csrf-token"]').attr('content')
+        }
+    });
 </script>

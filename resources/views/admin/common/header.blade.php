@@ -26,7 +26,7 @@
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Meta -->
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
@@ -45,7 +45,10 @@
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{asset('admin/css/bracket.css')}}">
     <script>
-
+        var SITE_CONSTANT = {
+            "SITE_URL": '<?php echo url("/"); ?>',
+        };
+        console.log(SITE_CONSTANT);
     </script>
 </head>
 <body>

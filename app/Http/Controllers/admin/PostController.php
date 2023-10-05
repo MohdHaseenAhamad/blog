@@ -30,11 +30,16 @@ class PostController extends Controller
     }
     public function savePost(Request $request)
     {
+
+        $imageName = $request->slug.'-'.time().'.'.$request->photo->extension();
+
+        $request->photo->move(public_path('upload/post'), $imageName);
+
         $this->_data = [
             'cat_id' => $request->cat_id,
             'title' => $request->title,
             'slug' => $request->slug,
-            'photo' =>$request->photo,
+            'photo' =>$imageName,
             'contents' => $request->contents,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
@@ -58,14 +63,18 @@ class PostController extends Controller
             'cat_id' => $request->cat_id,
             'title' => $request->title,
             'slug' => $request->slug,
-            'photo' =>$request->photo,
             'contents' => $request->contents,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
             'meta_keywords' => $request->meta_keywords,
-
             'created_at' =>  date('Y-m-d H:i:s'),
         ];
+        if ($request->has('photo'))
+        {
+            $imageName = $request->slug.'-'.time().'.'.$request->photo->extension();
+            $request->photo->move(public_path('upload/post'), $imageName);
+            $this->_data['photo'] = $imageName;
+        }
         $last_id = Post::where('id',$post_id)->update($this->_data);
         return redirect('/admin/post/edit-post/'.$post_id)->with('success','your blog update successfully');
 

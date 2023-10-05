@@ -15,7 +15,7 @@
     <div class="br-section-wrapper">
 
 
-        <form action="{{url('admin/post/save-post')}}" method="POST">
+        <form action="{{url('admin/post/save-post')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-8">
@@ -45,8 +45,8 @@
                 </div>
                 <div class="col-md-4 text-center">
                     <label class="custom-file">
-                        <input type="file" id="file" class="custom-file-input">
-                        <span class="custom-file-control"></span>
+                        <input type="file" id="file" name="photo" >
+                        {{--<span class="custom-file-control"></span>--}}
                     </label>
                 </div>
             </div>

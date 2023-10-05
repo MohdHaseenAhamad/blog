@@ -27,7 +27,7 @@ CKEDITOR.editorConfig = function (config) {
     config.forcePasteAsPlainText = true;
     config.removeFormatAttributes = true;
     config.extraPlugins = 'filebrowser';
-    config.filebrowserUploadUrl = '';
+    config.filebrowserUploadUrl = SITE_CONSTANT['SITE_URL'];
     config.allowedContent = true;
     config.protectedSource.push(/<i[^>]*><\/i>/g);
     config.fillEmptyBlocks = true;

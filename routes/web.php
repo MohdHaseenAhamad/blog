@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\PostController;
+use App\Http\Controllers\user\IndexController;
+use App\Http\Controllers\CkeditorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +16,12 @@ use App\Http\Controllers\admin\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin/index');
-});
+//Route::get('/', function () {
+//    return view('user/index');
+//});
+Route::get('/',[IndexController::class,'home']);
+Route::get('/post/{post:slug}',[IndexController::class,'listing'])->name('listing');
+Route::get('/post/{cat:slug}/{post:title}',[IndexController::class,'detail'])->name('detail');
 Route::get('/admin/category',[CategoryController::class,'index']);
 Route::get('/admin/category/add',[CategoryController::class,'add']);
 Route::post('/admin/category/save',[CategoryController::class,'save']);
@@ -29,4 +34,6 @@ Route::get('/admin/post/edit-post/{id}',[PostController::class,'editPost']);
 Route::post('/admin/post/update-post/{id}',[PostController::class,'updatePost']);
 Route::post('/admin/post/save-post',[PostController::class,'savePost']);
 
+
+Route::post('/ckeditor/upload', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
