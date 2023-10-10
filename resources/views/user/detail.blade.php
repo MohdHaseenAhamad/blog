@@ -1,43 +1,52 @@
-@include('user.common.header')
-<style>
-    #page_body {
-        margin-top: 105px;
-    }
-    #page_body img {
-        width: 100%;
-        height: auto;
-    }
-</style>
-{{--<header class="masthead bg-primary text-white text-center">--}}
-<div class="container">
-    <section id="page_body" class="container-fluid">
-        <div class="col-md-12 col-lg-12 mb-5">
+@include('user.header')
 
-            <div class="portfolio-item mx-auto">
-                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                    <div class="portfolio-item-caption-content text-center text-white"><i
-                            class="fas fa-plus fa-3x"></i></div>
+<!-- slider Area Start-->
+<div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="{{asset('user/assets/img/hero/contact_hero.jpg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Blog Detail</h2>
+                    </div>
                 </div>
-                <img class="img-fluid" src="{{asset('uploads/post/'.$result->photo)}}" width="100%" height="400px"
-                     alt="<?=isset($result->title) ? $result->title : ''?>" />
-                <h2 style="background-color: #4a5568;color: white;text-align:center;">
-                    <?=isset($result->title) ? $result->title : ''?>
-
-                </h2>
             </div>
         </div>
-        <section >
-            <h2 ><?=isset($result->title) ? $result->title : ''?></h2>
-        </section>
-        <section >
-            <div >{!!  $result->contents !!}</div>
-        </section>
-    </section>
+    </div>
 </div>
 
+<!-- slider Area End-->
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="{{asset('upload/post/'.$result->photo)}}" alt="{{$result->title}}">
+                    </div>
+                    <div class="blog_details">
+                        <h2>
+                            {{$result->title}}
+                        </h2>
+                        {{--<ul class="blog-info-link mt-3 mb-4">--}}
+                            {{--<li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>--}}
+                            {{--<li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>--}}
+                        {{--</ul>--}}
+                        {!! $result->contents !!}
 
-{{--</header>--}}
+                    </div>
+                </div>
 
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
 
-<!-- Footer-->
-@include('user.common.footer')
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ Blog Area end =================-->
+@include('user.footer')

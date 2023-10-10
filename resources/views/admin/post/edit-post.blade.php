@@ -18,37 +18,33 @@
         <form action="{{url('admin/post/update-post/'.$result->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <select class="form-control select2" data-placeholder="Select Category" name="cat_id">
-                                <option label="Select Category"></option>
-                                <?php foreach ($category as $key => $val)
-                                {
-                                ?>
-                                <option
-                                    value="<?=$val->id?>" <?=$result->cat_id == $val->id ? 'selected="selected"' : ''?>><?=$val->name?></option>
-                                <?php
-                                }?>
-                            </select>
-                        </div>
+                @include('admin.common._location_html')
+                <div class="col-md-12">
+                    <div class="row p-4">
+                        <div class="col-md-8">
+                            <div class="row">
 
-                        <div class="col-md-4">
-                            <input class="form-control" name="title" id="title" placeholder="Blog Title"
-                                   onkeyup="sanitizeStringForURL(this.value, 'slug')" value="<?=$result->title?>"
-                                   onkeydown="sanitizeStringForURL(this.value, 'slug')" type="text">
+
+                                <div class="col-md-4">
+                                    <input class="form-control" name="title" id="title" placeholder="Blog Title"
+                                           onkeyup="sanitizeStringForURL(this.value, 'slug')"
+                                           value="<?=$result->title?>"
+                                           onkeydown="sanitizeStringForURL(this.value, 'slug')" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="form-control" placeholder="Blog Slug" name="slug" id="slug" readonly
+                                           type="text" value="<?=$result->slug?>">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <input class="form-control" placeholder="Blog Slug" name="slug" id="slug" readonly
-                                   type="text" value="<?=$result->slug?>">
+                        <div class="col-md-4 text-center">
+                            <img src="{{asset('upload/post/'.$result->photo)}}" width="300px" height="200px">
+                            <label class="custom-file">
+                                <input type="file" id="file" name="photo" value="<?=$result->photo?>">
+<!--                                --><?//=$result->photo?>
+                            </label>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <label class="custom-file">
-                        <input type="file" id="file" name="photo">
-
-                    </label>
                 </div>
             </div>
             <div class="row">
@@ -103,7 +99,7 @@
 
 
 @include('admin.common.footer')
-
+@include('admin.common._location_script')
 <script>
     // $(document).ready(function() {
     //     CKEDITOR.replaceClass = 'ckeditor';
@@ -116,11 +112,4 @@
         $('#' + to_show).val(v);
     }
 </script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN':
-                $('meta[name ="csrf-token"]').attr('content')
-        }
-    });
-</script>
+

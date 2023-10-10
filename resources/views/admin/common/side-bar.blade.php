@@ -3,19 +3,25 @@
 <div class="br-sideleft overflow-y-auto">
     <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
     <div class="br-sideleft-menu">
-        <a href="index.blade.php" class="br-menu-link active">
+        <a href="index.blade.php" class="br-menu-link <?=isset($tab) ? ($tab == 'dashboard' ? 'active':''):'active'?>">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
                 <span class="menu-item-label">Dashboard</span>
             </div><!-- menu-item -->
         </a><!-- br-menu-link -->
-        <a href="index.blade.php" class="br-menu-link ">
+        <a href="{{url('admin/region')}}" class="br-menu-link <?=isset($tab) ? ($tab == 'region' ? 'active':''):'active'?>">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+                <span class="menu-item-label">Region</span>
+            </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+        <a href="{{url('admin/category')}}" class="br-menu-link <?=isset($tab) ? ($tab == 'category' ? 'active':''):'active'?>">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
                 <span class="menu-item-label">Category</span>
             </div><!-- menu-item -->
         </a><!-- br-menu-link -->
-        <a href="index.blade.php" class="br-menu-link ">
+        <a href="{{url('admin/post')}}" class="br-menu-link <?=isset($tab) ? ($tab == 'post' ? 'active':''):'active'?>">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
                 <span class="menu-item-label">Post</span>
@@ -175,7 +181,8 @@
 
     <!-- Tab panes -->
 
-</div><!-- br-sideright -->
+</div>
+<!-- br-sideright -->
 <!-- ########## END: RIGHT PANEL ########## --->
 <div class="br-mainpanel">
     {{-- Message --}}

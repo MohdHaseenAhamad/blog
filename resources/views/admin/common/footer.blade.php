@@ -25,6 +25,10 @@
 <script>
     $(function(){
         'use strict'
+        $(".select2").select2({
+            dropdownAutoWidth: true,
+            allowClear: true,
+        });
 
         // FOR DEMO ONLY
         // menu collapsed by default during first page load or refresh with screen

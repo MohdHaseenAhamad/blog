@@ -10,8 +10,24 @@ class IndexController extends Controller
 {
     public function home()
     {
-        $results = DB::table('category')->get()->toArray();
+
+        $results = DB::table('post')->get()->toArray();
+
         return view('user/index',['results'=>$results]);
+    }
+
+    public function blog()
+    {
+        $results = DB::table('post')->get()->toArray();
+
+        return view('user/blog',['results'=>$results]);
+    }
+
+    public function detail($slug)
+    {
+        $result = DB::table('post')->where('slug','=',$slug)->get()->toArray();
+
+        return view('user/detail',['result'=>$result[0]]);
     }
 
     public function listing($slug)
@@ -21,11 +37,6 @@ class IndexController extends Controller
         $results = DB::table('post')->where('cat_id',$post_id)->get()->toArray();
         return view('user/listing',['results'=>$results,'slug'=>$slug]);
     }
-    public function detail($slug,$title)
-    {
-        $result = DB::table('post')->where('slug',$title)->get()->toArray();
-//        dd($results);
-        return view('user/detail',['result'=>$result[0]]);
-    }
+
 
 }

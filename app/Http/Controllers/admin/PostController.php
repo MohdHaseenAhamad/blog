@@ -16,27 +16,37 @@ class PostController extends Controller
         $results = DB::table('category')->get()->toArray();
         return view($this->_folder_name . 'index', ['results' => $results]);
     }
-    public function listing($cat_id)
-    {
-        $results = DB::table('post')->where('cat_id',$cat_id)->get()->toArray();
 
-        return view($this->_folder_name . 'listing', ['results' => $results,'cat_id'=>$cat_id]);
+    public function add()
+    {
+
+        $region = DB::table('continents')->get()->toArray();
+        return view($this->_folder_name.'add-post',['region'=>$region,'tab'=>'post']);
+    }
+
+    public function listing()
+    {
+        $results = DB::table('post')->get()->toArray();
+
+        return view($this->_folder_name . 'listing', ['results' => $results,'tab'=>'post']);
     }
 
     public function addPost($cat_id)
     {
         $category = DB::table('category')->get()->toArray();
-        return view($this->_folder_name.'add-post',['category' => $category,'cat_id'=>$cat_id]);
+        $region = DB::table('continents')->get()->toArray();
+        return view($this->_folder_name.'add-post',['category' => $category,'cat_id'=>$cat_id,'region'=>$region,'tab'=>'post']);
     }
+
     public function savePost(Request $request)
     {
-
         $imageName = $request->slug.'-'.time().'.'.$request->photo->extension();
-
         $request->photo->move(public_path('upload/post'), $imageName);
-
         $this->_data = [
-            'cat_id' => $request->cat_id,
+            'con_id' =>$request->con_id,
+            'cnt_id' =>$request->cnt_id,
+            'sts_id' =>$request->sts_id,
+            'dis_id' =>$request->dis_id,
             'title' => $request->title,
             'slug' => $request->slug,
             'photo' =>$imageName,
@@ -48,19 +58,27 @@ class PostController extends Controller
             'created_at' =>  date('Y-m-d H:i:s'),
         ];
        $last_id = Post::create($this->_data);
-       return redirect('/admin/post/listing/'.$request->cat_id)->with('success','your blog add successfully');
+       return redirect('/admin/post/listing')->with('success','your blog add successfully');
 
     }
+
     public function editPost($post_id)
     {
         $result = DB::table('post')->where('id',$post_id)->get()->toArray();
         $category = DB::table('category')->get()->toArray();
-        return view($this->_folder_name.'edit-post',['category' => $category,'result'=>$result[0]]);
+        $region = DB::table('continents')->get()->toArray();
+        return view($this->_folder_name.'edit-post',['category' => $category,'result'=>$result[0],'region'=>$region,'tab'=>'post']);
     }
+
     public function updatePost(Request $request,$post_id)
     {
+
         $this->_data = [
             'cat_id' => $request->cat_id,
+            'con_id' =>$request->reg_id,
+            'cnt_id' =>$request->cnt_id,
+            'sts_id' =>$request->sts_id,
+            'dis_id' =>$request->dis_id,
             'title' => $request->title,
             'slug' => $request->slug,
             'contents' => $request->contents,
@@ -78,5 +96,25 @@ class PostController extends Controller
         $last_id = Post::where('id',$post_id)->update($this->_data);
         return redirect('/admin/post/edit-post/'.$post_id)->with('success','your blog update successfully');
 
+    }
+
+    public function getCountry(Request $request)
+    {
+        $reg_id = $request->reg_id;
+        $country = DB::table('countries')->where('cnt_con_id','=',$reg_id)->get()->toArray();
+        echo json_encode(['country'=>$country,'status'=>true]);
+    }
+
+    public function getState(Request $request)
+    {
+        $cnt_id = $request->cnt_id;
+        $state = DB::table('states')->where('sts_cnt_id','=',$cnt_id)->get()->toArray();
+        echo json_encode(['state'=>$state,'status'=>true]);
+    }
+    public function getCity(Request $request)
+    {
+        $sts_id = $request->sts_id;
+        $city = DB::table('districts')->where('dis_sts_id','=',$sts_id)->get()->toArray();
+        echo json_encode(['city'=>$city,'status'=>true]);
     }
 }

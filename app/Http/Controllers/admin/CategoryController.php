@@ -10,13 +10,16 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller {
     var $_folder_name = 'admin/category/';
 
+
+
     public function index() {
+
         $results = DB::table('category')->get()->toArray();
-        return view($this->_folder_name . 'index', ['results' => $results]);
+        return view($this->_folder_name . 'index', ['results' => $results,'tab'=>'category']);
     }
 
     public function add() {
-        return view($this->_folder_name . 'add');
+        return view($this->_folder_name . 'add',['tab'=>'category']);
     }
 
     public function save(Request $request) {
@@ -35,7 +38,7 @@ class CategoryController extends Controller {
 
     public function edit($id) {
         $result = DB::table('category')->where('id', $id)->get()->toArray();
-        return view($this->_folder_name . 'edit', ['result' => $result[0], 'id' => $id]);
+        return view($this->_folder_name . 'edit', ['result' => $result[0], 'id' => $id,'tab'=>'category']);
     }
 
     public function update(Request $request,$id) {

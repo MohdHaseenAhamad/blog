@@ -1,155 +1,307 @@
-@include('user.common.header')
-<header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-        <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="{{asset('user/assets/img/avataaars.svg')}}" alt="..." />
-        <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- Masthead Subheading-->
-        <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
-    </div>
-</header>
-<section class="page-section portfolio" id="portfolio">
-    <div class="container">
-        <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Category</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- Portfolio Grid Items-->
-        <div class="row justify-content-center">
-            <!-- Portfolio Item 1-->
-            <?php if (isset($results)) {
+@include('user.header')
 
-            foreach ($results as $key => $value) {
-            ?>
+<main>
 
-            <div class="col-md-6 col-lg-4 mb-5">
-                <a href="{{route('listing',$value->slug)}}" >
-                <div class="portfolio-item mx-auto" >
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
-                                class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="{{asset('user/assets/img/portfolio/cabin.png')}}" alt="<?=isset($value->slug) ? $value->slug :''?>"/>
-                    <h2 style="background-color: #4a5568;color: white;text-align:center;">
-                        <?=isset($value->name) ? $value->name :''?>
-
-                    </h2>
-                </div>
-                </a>
-            </div>
-
-            <?php
-            }
-            }?>
-        </div>
-    </div>
-</section>
-<!-- About Section-->
-<section class="page-section bg-primary text-white mb-0" id="about">
-    <div class="container">
-        <!-- About Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- About Section Content-->
-        <div class="row">
-            <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-            <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
-        </div>
-        <!-- About Section Button-->
-        <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                <i class="fas fa-download me-2"></i>
-                Free Download!
-            </a>
-        </div>
-    </div>
-</section>
-<!-- Contact Section-->
-<section class="page-section" id="contact">
-    <div class="container">
-        <!-- Contact Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- Contact Section Form-->
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-xl-7">
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                    <!-- Name input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                        <label for="name">Full name</label>
-                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                    </div>
-                    <!-- Email address input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                        <label for="email">Email address</label>
-                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                    </div>
-                    <!-- Phone number input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                        <label for="phone">Phone number</label>
-                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                    </div>
-                    <!-- Message input-->
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                        <label for="message">Message</label>
-                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                    </div>
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+    <!-- slider Area Start-->
+    <div class="slider-area ">
+        <!-- Mobile Menu -->
+        <div class="slider-active">
+            <div class="single-slider hero-overly  slider-height d-flex align-items-center"
+                 data-background="{{asset('user/assets/img/hero/h1_hero.jpg')}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-9 col-md-9">
+                            <div class="hero__caption">
+                                <h1>Find your <span>Next tour!</span></h1>
+                                <p>Where would you like to go?</p>
+                            </div>
                         </div>
                     </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                    <!-- Submit Button-->
-                    <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
-                </form>
+                    <!-- Search Box -->
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <!-- form -->
+                            <form action="#" class="search-box">
+                                <div class="input-form mb-30">
+                                    <input type="text" placeholder="When Would you like to go ?">
+                                </div>
+                                <div class="select-form mb-30">
+                                    <div class="select-itms">
+                                        <select name="select" id="select1">
+                                            <option value="">When</option>
+                                            <option value="">Services-1</option>
+                                            <option value="">Services-2</option>
+                                            <option value="">Services-3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="search-form mb-30">
+                                    <a href="#">Search</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
-<!-- Footer-->
-@include('user.common.footer')
+    <!-- slider Area End-->
+    <!-- Our Services Start -->
+    <div class="our-services servic-padding">
+        <div class="container">
+            <div class="row d-flex justify-contnet-center">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-tour"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5>8000+ Our Local<br>Guides</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-pay"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5>100% Trusted Tour<br>Agency</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-experience"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5>28+ Years of Travel<br>Experience</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-good"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5>98% Our Travelers<br>are Happy</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Services End -->
+    <!-- Favourite Places Start -->
+    {{--<div class="favourite-place place-padding">--}}
+        {{--<div class="container">--}}
+            {{--<!-- Section Tittle -->--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-lg-12">--}}
+                    {{--<div class="section-tittle text-center">--}}
+                        {{--<span>FEATURED TOURS Packages</span>--}}
+                        {{--<h2>Favourite Places</h2>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="row">--}}
+                {{--<?php foreach ($results as $key =>$value)--}}
+                {{--{--}}
+                {{--?>--}}
+                {{--<div class="col-xl-4 col-lg-4 col-md-6">--}}
+                    {{--<div class="single-place mb-30">--}}
+                        {{--<div class="place-img">--}}
+                            {{--<img src="{{asset('upload/post/'.$value->photo)}}" alt="<?=$value->title?>">--}}
+                        {{--</div>--}}
+                        {{--<div class="place-cap">--}}
+                            {{--<div class="place-cap-top">--}}
+                                {{--<span><i class="fas fa-star"></i><span>8.0 Superb</span> </span>--}}
+                                {{--<h3><a href="#"><?=$value->title?></a></h3>--}}
+                                {{--<p class="dolor">$1870 <span>/ Per Person</span></p>--}}
+                            {{--</div>--}}
+                            {{--<div class="place-cap-bottom">--}}
+                                {{--<ul>--}}
+                                    {{--<li><i class="far fa-clock"></i>3 Days</li>--}}
+                                    {{--<li><i class="fas fa-map-marker-alt"></i>Los Angeles</li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<?php--}}
+                {{--}?>--}}
+
+
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    <!-- Favourite Places End -->
+    <!-- Video Start Arera -->
+    <div class="video-area video-bg pt-200 pb-200" data-background="{{asset('user/assets/img/service/video-bg.jpg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="video-caption text-center">
+                        <div class="video-icon">
+                            <a class="popup-video" href="https://www.youtube.com/watch?v=1aP-TXUpNoU" tabindex="0"><i
+                                    class="fas fa-play"></i></a>
+                        </div>
+                        <p class="pera1">Love where you're going in the perfect time</p>
+                        <p class="pera2">Tripo is a World Leading Online</p>
+                        <p class="pera3"> Tour Booking Platform</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Video Start End -->
+    <!-- Support Company Start-->
+    <div class="support-company-area support-padding fix">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="support-location-img mb-50">
+                        <img src="{{asset('user/assets/img/service/support-img.jpg')}}" alt="">
+                        <div class="support-img-cap">
+                            <span>Since 1992</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="right-caption">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle section-tittle2">
+                            <span>About Our Company</span>
+                            <h2>We are Go Trip <br>Ravels Support Company</h2>
+                        </div>
+                        <div class="support-caption">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+                            <div class="select-suport-items">
+                                <label class="single-items">Lorem ipsum dolor sit amet
+                                    <input type="checkbox" checked="checked active">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="single-items">Consectetur adipisicing sed do
+                                    <input type="checkbox" checked="checked active">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="single-items">Eiusmod tempor incididunt
+                                    <input type="checkbox" checked="checked active">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="single-items">Ad minim veniam, quis nostrud.
+                                    <input type="checkbox" checked="checked active">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <a href="#" class="btn border-btn">About us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Support Company End-->
+    <!-- Testimonial Start -->
+    <!-- Testimonial Start -->
+    <div class="testimonial-area testimonial-padding" data-background="{{asset('user/assets/img/testmonial/testimonial_bg.jpg')}}">
+        <div class="container ">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-11 col-lg-11 col-md-9">
+                    <div class="h1-testimonial-active">
+                        <!-- Single Testimonial -->
+                        <div class="single-testimonial text-center">
+                            <!-- Testimonial Content -->
+                            <div class="testimonial-caption ">
+                                <div class="testimonial-top-cap">
+                                    <img src="{{asset('user/assets/img/icon/testimonial.png')}}" alt="">
+                                    <p>Logisti Group is a representative logistics operator providing full range of ser
+                                        of customs clearance and transportation worl.</p>
+                                </div>
+                                <!-- founder -->
+                                <div class="testimonial-founder d-flex align-items-center justify-content-center">
+                                    <div class="founder-img">
+                                        <img src="{{asset('user/assets/img/testmonial/Homepage_testi.png')}}" alt="">
+                                    </div>
+                                    <div class="founder-text">
+                                        <span>Jessya Inn</span>
+                                        <p>Co Founder</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Testimonial -->
+                        <div class="single-testimonial text-center">
+                            <!-- Testimonial Content -->
+                            <div class="testimonial-caption ">
+                                <div class="testimonial-top-cap">
+                                    <img src="{{asset('user/assets/img/icon/testimonial.png')}}" alt="">
+                                    <p>Logisti Group is a representative logistics operator providing full range of ser
+                                        of customs clearance and transportation worl.</p>
+                                </div>
+                                <!-- founder -->
+                                <div class="testimonial-founder d-flex align-items-center justify-content-center">
+                                    <div class="founder-img">
+                                        <img src="{{asset('user/assets/img/testmonial/Homepage_testi.png')}}" alt="">
+                                    </div>
+                                    <div class="founder-text">
+                                        <span>Jessya Inn</span>
+                                        <p>Co Founder</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+    <!-- Blog Area Start -->
+    <div class="home-blog-area section-padding2">
+        <div class="container">
+            <!-- Section Tittle -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tittle text-center">
+                        <span>Our Recent news</span>
+                        <h2>Tourist Blog</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <?php foreach ($results as $key =>$value)
+                {
+                ?>
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="home-blog-single mb-30">
+                        <div class="blog-img-cap">
+                            <div class="blog-img">
+                                <img src="{{asset('upload/post/'.$value->photo)}}" alt="<?=$value->title?>">
+                            </div>
+                            <div class="blog-cap">
+                                <p> | Traveling</p>
+                                <h3><a href="#"><?=$value->title?></a></h3>
+                                <a href="<?=url('/blog/'.$value->slug)?>" class="more-btn">Read more »</a>
+                            </div>
+                        </div>
+                        <div class="blog-date text-center">
+                            <span>24</span>
+                            <p>Now</p>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+
+            </div>
+        </div>
+    </div>
+    <!-- Blog Area End -->
+
+</main>
+
+
+@include('user.footer')
