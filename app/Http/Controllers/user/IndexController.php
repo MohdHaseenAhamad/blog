@@ -37,6 +37,33 @@ class IndexController extends Controller
         $results = DB::table('post')->where('cat_id',$post_id)->get()->toArray();
         return view('user/listing',['results'=>$results,'slug'=>$slug]);
     }
-
+    public function about()
+    {
+        return view('user/about');
+    }
+    public function contact()
+    {
+        return view('user/contact');
+    }
+    public function contactSave(Request $request)
+    {
+        $validator = $request->validate([
+            'message' => 'required|max:1000',
+            'name' => 'required|max:100',
+            'email' => 'required|max:100',
+            'subject' => 'required|max:100',
+        ]);
+        if($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+        $data = [
+            'message'=>$request->message,
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'subject'=>$request->message,
+        ];
+        DB::table('contact_us')->insert($data);
+        return redirect()->back()->with('success','Your message send successfully.');
+    }
 
 }

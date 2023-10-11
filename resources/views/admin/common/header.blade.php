@@ -35,7 +35,7 @@
 
     <!-- vendor css -->
     <link href="{{asset('admin/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <link href="{{asset('admin/lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('admin/lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">--}}
     <link href="{{asset('admin/lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
     <link href="{{asset('admin/lib/jquery-switchbutton/jquery.switchButton.css')}}" rel="stylesheet">
     <link href="{{asset('admin/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">

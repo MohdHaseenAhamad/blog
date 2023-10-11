@@ -1,6 +1,6 @@
 <div class="col-md-3">
     <select class="form-control select2" data-placeholder="Select Region" id="region_id"
-            name="reg_id">
+            name="reg_id" onchange="getCountry(this.value)">
         <option label="Select Region"></option>
         <?php foreach ($region as $reg_key => $reg_val)
         {

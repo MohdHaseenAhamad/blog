@@ -101,9 +101,9 @@
 @include('admin.common.footer')
 @include('admin.common._location_script')
 <script>
-    // $(document).ready(function() {
-    //     CKEDITOR.replaceClass = 'ckeditor';
-    // });
+    $(document).ready(function() {
+        CKEDITOR.replaceClass = 'ckeditor';
+    });
     function sanitizeStringForURL(string, to_show) {
         var v = $.trim(string);
         v = v.toLowerCase();

@@ -85,7 +85,7 @@
                                     <ul id="navigation">
                                         <li><a href="{{url('/')}}">Home</a></li>
                                         <li><a href="{{url('/blog')}}">Our Blog</a></li>
-                                        <li><a href="about.html">About US</a></li>
+                                        <li><a href="{{url('/about')}}">About US</a></li>
                                         {{--<li><a href="packages.html">Package</a></li>--}}
                                         {{--<li><a href="blog.html">Our Blog</a>--}}
                                         {{--<ul class="submenu">--}}
@@ -98,7 +98,7 @@
                                         {{--<li><a href="elements.html">Element</a></li>--}}
                                         {{--</ul>--}}
                                         {{--</li>--}}
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="{{url('/contact-us')}}">Contact Us</a></li>
                                     </ul>
                                 </nav>
                             </div>

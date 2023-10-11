@@ -8,7 +8,7 @@
 </div>
 <div class="pd-30">
 
-    <a href="{{url('/admin/post/add-post/')}}" class="btn btn-primary redirect_btn"><i class="fa fa-save mg-r-10"></i> Add Category</a>
+    <a href="{{url('/admin/post/add-post')}}" class="btn btn-primary redirect_btn"><i class="fa fa-save mg-r-10"></i> Add Post</a>
 </div>
 
 <div class="br-pagebody mg-t-5 pd-x-30">
