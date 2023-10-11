@@ -91,6 +91,7 @@
 
 
             <div class="mg-l-10 mg-t-25 pd-t-4">
+                <a href="{{url('admin/post')}}" class="btn btn-warning tx-11 pd-y-12 tx-uppercase tx-spacing-2">Back</a>
                 <button type="submit" class="btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2">Post Now</button>
             </div>
         </form>
