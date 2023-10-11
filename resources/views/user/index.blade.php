@@ -289,8 +289,8 @@
                             </div>
                         </div>
                         <div class="blog-date text-center">
-                            <span>24</span>
-                            <p>Now</p>
+                            <span><?=date('d',strtotime($value->date_posted))?></span>
+                            <p><?=date('M',strtotime($value->date_posted))?></p>
                         </div>
                     </div>
                 </div>

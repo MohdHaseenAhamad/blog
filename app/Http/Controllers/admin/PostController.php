@@ -17,7 +17,6 @@ class PostController extends Controller {
     }
 
     public function add() {
-
         $region = DB::table('continents')->get()->toArray();
         return view($this->_folder_name . 'add-post', ['region' => $region, 'tab' => 'post']);
     }

@@ -11,14 +11,14 @@ class IndexController extends Controller
     public function home()
     {
 
-        $results = DB::table('post')->get()->toArray();
+        $results = DB::table('post')->orderBy('date_posted','desc')->get()->toArray();
 
         return view('user/index',['results'=>$results]);
     }
 
     public function blog()
     {
-        $results = DB::table('post')->get()->toArray();
+        $results = DB::table('post')->orderBy('date_posted','desc')->get()->toArray();
 
         return view('user/blog',['results'=>$results]);
     }
