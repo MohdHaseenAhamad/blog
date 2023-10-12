@@ -50,3 +50,6 @@
 </section>
 <!--================ Blog Area end =================-->
 @include('user.footer')
+<script>
+    visitor(3);
+</script>

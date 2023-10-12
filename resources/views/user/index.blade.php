@@ -305,3 +305,7 @@
 
 
 @include('user.footer')
+
+<script>
+    visitor(1);
+</script>

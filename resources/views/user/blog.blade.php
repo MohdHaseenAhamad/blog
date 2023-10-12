@@ -259,3 +259,6 @@
     </section>
     <!--================Blog Area =================-->
 @include('user.footer')
+<script>
+    visitor(2);
+</script>

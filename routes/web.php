@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\user\IndexController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\admin\RegionController;
+use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +24,7 @@ use App\Http\Controllers\admin\RegionController;
 //    return view('user/index');
 //});
 Route::get('/',[IndexController::class,'home']);
+Route::post('/visitor',[IndexController::class,'visitors'])->name('visitors');
 Route::get('/blog',[IndexController::class,'blog']);
 Route::get('/blog/{slug}',[IndexController::class,'detail']);
 Route::get('/about',[IndexController::class,'about']);
@@ -33,8 +37,12 @@ Route::get('/admin/category/add',[CategoryController::class,'add']);
 Route::post('/admin/category/save',[CategoryController::class,'save']);
 Route::get('/admin/category/edit/{id}',[CategoryController::class,'edit']);
 Route::post('/admin/category/update/{id}',[CategoryController::class,'update']);
-//Route::get('/admin/post',[PostController::class,'index']);
+Route::get('/admin/dashboard',[DashboardController::class,'index']);
 Route::get('/admin/post',[PostController::class,'listing']);
+Route::get('/admin/login',[AuthController::class,'login']);
+Route::post('/admin/login-auth',[AuthController::class,'loginAuth']);
+Route::get('/admin/register',[RegisterController::class,'register']);
+Route::post('/admin/register/save',[RegisterController::class,'save']);
 Route::get('/admin/post/add',[PostController::class,'add']);
 Route::get('/admin/post/add-post',[PostController::class,'addPost']);
 Route::get('/admin/post/edit-post/{id}',[PostController::class,'editPost']);

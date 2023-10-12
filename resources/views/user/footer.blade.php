@@ -123,7 +123,30 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="{{asset('user/assets/js/plugins.js')}}"></script>
 <script src="{{asset('user/assets/js/main.js')}}"></script>
+<script>
+    $.ajaxSetup
+    ({
+        headers: {
+            'X-CSRF-TOKEN':
+                $('meta[name ="csrf-token"]').attr('content')
+        }
+    });
+    // $(document).load(function () {
+    //
+    // });
+    function visitor(page)
+    {
+        $.ajax({
+            url: '<?=route("visitors")?>',
+            method: 'POST',
+            data:{page:page,"_token": "{{ csrf_token() }}"},
+            success: function (res) {
 
+            }
+        });
+    }
+
+</script>
 </body>
 
 

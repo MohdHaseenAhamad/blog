@@ -66,4 +66,16 @@ class IndexController extends Controller
         return redirect()->back()->with('success','Your message send successfully.');
     }
 
+    public function visitors(Request $request)
+    {
+        $request->header('User-Agent');
+
+        $data = [
+            'user_ip'=>$request->ip(),
+            'page'=>intval($request->page)
+        ];
+        $res = DB::table('visitors')->insert($data);
+        echo json_encode(['data' => $res, 'status' => true]);
+    }
+
 }
